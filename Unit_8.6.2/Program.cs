@@ -12,49 +12,26 @@ namespace Unit_8_6_2
     {
         static void Main(string[] args)
         {
-            try
-            {
-                DirectoryInfo dirInfo = new DirectoryInfo(@"C:\\User\\Luft\\SkillFactoryNew");
 
-                WriteFolderInfo(dirInfo);
+            string path = @"C:\\User\\Luft\\SkillFactoryNew";
+            if (Directory.Exists(path))
+            {
+
+
+                try
+                {
+                    DirectoryInfo dirInfo = new DirectoryInfo(path);
+                    Console.WriteLine($"В папке: {path}");
+
+                    Console.WriteLine($"Всего {DirectoryExtinsion.DirSize(dirInfo)} байт");
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"Произошла ошибка: {e}"); ; ;
+                }
             }
-            catch (Exception e)
-            {
-                Console.WriteLine($"Произошла ошибка: {e}"); ; ;
-            }
-
-            /*DriveInfo[] drives = DriveInfo.GetDrives();
-            foreach (DriveInfo drive in drives.Where(d.DriveInfo => d.DriveType == DriveType.Fixed)
-            {
-                DirectoryInfo root = drive.RootDirectory;
-                var folders.DirectoryInfo[] = root.GetDirectories();
-            }*/
-
-
-
-
-
-            // DirectoryInfo dirName = new DirectoryInfo(@"C:\\User\\Luft\\SkillFactoryNew");
-
-
-
-
-
-            /*   if (Directory.Exists(@"C:\\User\\Luft\\SkillFactoryNew"))
-               {
-                   try
-                   {
-                       string dirName = @"C:\\User\\Luft\\SkillFactoryNew";
-                       WriteFolderInfo(dirName);
-                   }
-                   catch (Exception ex)
-                   {
-                       Console.WriteLine($"Произошла ошибка: {ex.Message}");
-                   }
-               }*/
         }
-
-
+            
 
         public static class DirectoryExtinsion
         {
@@ -75,25 +52,6 @@ namespace Unit_8_6_2
                 return size;
             }
         }
-
-       
-            public static void WriteFolderInfo(DirectoryInfo[] folders)
-            {
-                foreach (DirectoryInfo folder in folders)
-                {
-                    try
-                    {
-                        Console.WriteLine(DirectoryExtinsion.DirSize(folder));
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine($"Произошла ошибка: {e}");
-                    }
-                }
-            }
-
-           
-    
 
     }
 }
